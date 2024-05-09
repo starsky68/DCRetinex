@@ -97,5 +97,5 @@ class DCRetinex(nn.Module):
         x = self.fl(x)
         u,_,_,_ = self.da(x)
         R,L = self.head(u)
-        return L, R, X
+        return L, R, x
         
