@@ -183,10 +183,7 @@ if __name__ == '__main__':
          "eigengradcam": EigenGradCAM,
          "layercam": LayerCAM,
          "fullgrad": FullGrad}
-    if args.model == "HgNet":
-        print('===> Building model HgNet')
-        model= HgNet()
-    elif args.model == "DCRetinex":
+    if args.model == "DCRetinex":
         print('===> Building model PINet')
         model= DCRetinex()
 
@@ -234,79 +231,4 @@ if __name__ == '__main__':
     cam_image = show_cam_on_image(img_float, grayscale_cam, use_rgb=True)
     #Image.fromarray(cam_image)
     cv2.imwrite(args.output_image_path, cam_image)
-    '''
-    if args.image_path:
-        img_path = args.image_path
-    else:
-        import requests
-        image_url = ''
-        img_path = image_url.split('/')[-1]
-        if os.path.exists(img_path):
-            img_data = requests.get(image_url).content
-            with open(img_path, 'wb') as handler:
-                handler.write(img_data)
-        
-    if args.output_image_path:
-        save_name = args.output_image_path
-    else:
-        img_type = img_path.split('.')[-1]
-        it_len = len(img_type)
-        save_name = img_path.split('/')[-1][:-(it_len + 1)]
-        save_name = save_name + '_' + args.model + '.' + img_type
-
-    img = cv2.imread(img_path, 1)
-    img = cv2.resize(img, (128, 128), interpolation=cv2.INTER_AREA)
-    if args.model == 'resize':
-        cv2.imwrite(save_name, img)
-    else:
-        rgb_img = img[:, :, ::-1]
-        rgb_img = np.float32(rgb_img) / 255
-        input_tensor = preprocess_image(rgb_img, mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225])
-
-
-        # We have to specify the target we want to generate
-        # the Class Activation Maps for.
-        # If targets is None, the highest scoring category (for every member in the batch) will be used.
-        # You can target specific categories by
-        # targets = [e.g ClassifierOutputTarget(281)]
-        targets = None
-
-        # Using the with statement ensures the context is freed, and you can
-        # recreate different CAM objects in a loop.
-        cam_algorithm = methods[args.method]
-        with cam_algorithm(model=model,
-                        target_layers=target_layers,
-                        use_cuda=args.use_cuda,
-                        reshape_transform=reshape_transform, 
-                        ) as cam:
-
-            # AblationCAM and ScoreCAM have batched implementations.
-            # You can override the internal batch size for faster computation.
-            cam.batch_size = 1
-            print(input_tensor)
-            grayscale_cam = cam(input_tensor=input_tensor,
-                                targets=targets,
-                                aug_smooth=args.aug_smooth,
-                                eigen_smooth=args.eigen_smooth)
-
-            # Here grayscale_cam has only one image in the batch
-            grayscale_cam = grayscale_cam[0, :]
-
-            cam_image = show_cam_on_image(rgb_img, grayscale_cam, use_rgb=True)
-
-            # cam_image is RGB encoded whereas "cv2.imwrite" requires BGR encoding.
-            cam_image = cv2.cvtColor(cam_image, cv2.COLOR_RGB2BGR)
-
-        # gb_model = GuidedBackpropReLUModel(model=model, use_cuda=args.use_cuda)
-        # gb = gb_model(input_tensor, target_category=None)
-
-        # cam_mask = cv2.merge([grayscale_cam, grayscale_cam, grayscale_cam])
-        # cam_gb = deprocess_image(cam_mask * gb)
-        # gb = deprocess_image(gb)
-
-        # cv2.imwrite(f'{args.method}_cam_poolformer_s24.jpg', cam_image)
-        
-        cv2.imwrite(save_name, cam_image)
-        # cv2.imwrite(f'{args.method}_gb_poolformer_s24.jpg', gb)
-        # cv2.imwrite(f'{args.method}_cam_gb_poolformer_s24.jpg', cam_gb)
-        '''
+    
