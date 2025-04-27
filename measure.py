@@ -97,8 +97,8 @@ def metrics(im_dir, label_dir):
 
 if __name__ == '__main__':
 
-    im_dir = '/home/jinyutao/Comparisons/data/URetinex/SICE/*.png'
-    label_dir = '/home/jinyutao/PILIENet/datasets/tests/SICE/GT_128_HQ/'
+    im_dir = '/data/URetinex/SICE/*.png'
+    label_dir = '/datasets/tests/SICE/GT_128_HQ/'
 
     # im_dir = 'results/SICE/I/*.JPG'
     # label_dir = '../dataset/LIE/SICE-test/label/'
