@@ -186,27 +186,21 @@ if __name__ == '__main__':
     if args.model == "HgNet":
         print('===> Building model HgNet')
         model= HgNet()
-    elif args.model == "PINet":
+    elif args.model == "DCRetinex":
         print('===> Building model PINet')
-        model= PINet()
-    elif args.model == "PINetv2":
-        print('===> Building model PINetv2')
-        model= PINetv2()
-    elif args.model == "PairLIE":
-        print('===> Building model PairLIE')
-        model= pairlie()
+        model= DCRetinex()
+
         
     checkpoint = torch.load(args.pth_path)    
     model.load_state_dict(checkpoint, strict=False)
 
     reshape_transform = None
     
-    if 'PINet' in args.model:
+    if 'DCRetinex' in args.model:
         #print(model)
         target_layers = [model.pi.p.downd] 
         print(target_layers)
-    elif 'PINetv2' in args.model:
-        target_layers = [model.pi[1]]
+
 
 
     model.eval()
