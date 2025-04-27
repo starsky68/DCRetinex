@@ -32,15 +32,15 @@ def gen_cam(model, img,out_path):
 
 if __name__ == '__main__':
 
-    path_img = r'/home/jinyutao/PILIENet/SICE1_weights/visual/1.JPG'
-    ckpt_path = r'/home/jinyutao/PILIENet/SICE1_weights/PINet/014/best_psnr_PILIELoss.pth'
-    output_dir = r'/home/jinyutao/PILIENet/SICE1_weights/visual/11.JPG'
+    path_img = r'/SICE1_weights/visual/1.JPG'
+    ckpt_path = r'/SICE1_weights/PINet/014/best_psnr_PILIELoss.pth'
+    output_dir = r'/SICE1_weights/visual/11.JPG'
 
     # 图片读取；网络加载
     img = Image.open(path_img).convert('RGB')#cv2.imread(path_img, 1)  # H*W*C
     #print(img)
     img_input = img_preprocess(img).unsqueeze(0)
-    # model = PINet()
+    # model = DCRetinex()
     model = visual()
     model.load_state_dict(torch.load(ckpt_path), strict=False)
     model.eval()
