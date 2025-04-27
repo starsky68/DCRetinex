@@ -1,6 +1,6 @@
 import torch
 from thop import profile
-from model.PINet import PINet
+from model.DCRetinex import DCRetinex
 
 model = PINet()
 input = torch.randn(1, 3, 128, 128) # 960，720
