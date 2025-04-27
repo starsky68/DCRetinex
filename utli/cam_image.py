@@ -72,12 +72,12 @@ def get_args():
     parser.add_argument(
         '--image-path',
         type=str,
-        default='/home/jinyutao/PILIENet/datasets/tests/SICE/low_128_HQ/0000001.png',
+        default='/datasets/tests/SICE/low_128_HQ/0000001.png',
         help='Input image path')
     parser.add_argument(
         '--output-image-path',
         type=str,
-        default='/home/jinyutao/PILIENet/results/vis/0000001vs.png',
+        default='/results/vis/0000001vs.png',
         help='Output image path')
     parser.add_argument(
         '--model',
@@ -88,7 +88,7 @@ def get_args():
     parser.add_argument(
         '--pth_path',
         type=str,
-        default='/home/jinyutao/PILIENet/train_weights/PINet/best_psnr_PairLIELoss.pth',
+        default='/train_weights/PINet/best_psnr_PairLIELoss.pth',
         help='pth_path name') 
     parser.add_argument(
         '--num_classes',
