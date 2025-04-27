@@ -95,7 +95,7 @@ class DCRetinex(nn.Module):
         
     def forward(self, x):
         x = self.fl(x)
-        u,_,_,_ = self.da(x)
+        u,x,_,_ = self.da(x)
         R,L = self.head(u)
         return L, R, x
         
