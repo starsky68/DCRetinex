@@ -18,7 +18,7 @@ from model import *
 
 
 # Training settings
-parser = argparse.ArgumentParser(description='PILIE')
+parser = argparse.ArgumentParser(description='DCRetinex')
 parser.add_argument('--batchSize', type=int, default=1, help='training batch size')  #default=1
 parser.add_argument('--nEpochs', type=int, default=400, help='number of epochs to train for')
 parser.add_argument('--snapshots', type=int, default=20, help='Snapshots')
@@ -30,15 +30,15 @@ parser.add_argument('--decay', type=int, default='100', help='learning rate deca
 parser.add_argument('--weight_decay', type=float, default=1e-9, help='weight decay type')
 parser.add_argument('--gamma', type=float, default=0.5, help='learning rate decay factor for step decay')
 parser.add_argument('--seed', type=int, default=123456789, help='random seed to use. Default=123')
-parser.add_argument('--data_train', type=str, default='/data/AGroup/2open_dataset/LowlightEnhancDatasets/SICE128/paired_lowlight_datasets/')
+parser.add_argument('--data_train', type=str, default='/SICE128/paired_lowlight_datasets/')
 parser.add_argument('--rgb_range', type=int, default=1, help='maximum value of RGB')
 parser.add_argument('--save_folder', default='ckpt/', help='Location to save checkpoint models')
 parser.add_argument('--output_folder', default='results/val_results/', help='Location to save checkpoint models')
-parser.add_argument('--label_path', default='/data/AGroup/2open_dataset/LowlightEnhancDatasets/SICE128/Eval/GT_128_HQ/', help='Location to save checkpoint models')
-parser.add_argument('--data_test', type=str, default='/data/AGroup/2open_dataset/LowlightEnhancDatasets/SICE128/Eval/low_128_HQ')
+parser.add_argument('--label_path', default='/SICE128/Eval/GT_128_HQ/', help='Location to save checkpoint models')
+parser.add_argument('--data_test', type=str, default='/SICE128/Eval/low_128_HQ')
 parser.add_argument('--log_dir', type=str, default='results/log_dir/')
 parser.add_argument('--model_name', type=str, default='DCRetinex')
-parser.add_argument('--loss_name', type=str, default='RePILossP')
+parser.add_argument('--loss_name', type=str, default='')
 parser.add_argument('--t_model_type', type=str, default='zdce')
 parser.add_argument('--lc', type=float, default=0.14)
 
